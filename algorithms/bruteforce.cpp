@@ -9,7 +9,7 @@ void backtrack(
     int currentWeight,
     int currentProfit,
     int capacity,
-    int maxPallets
+    int maxPallets,
     vector<Pallet>& currentSet,
     vector<Pallet>& bestSet,
     int& bestProfit
