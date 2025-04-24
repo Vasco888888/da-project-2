@@ -23,11 +23,13 @@ vector<Pallet> greedyKnapsack(const Instance& instance) {
 
     vector<Pallet> selected;
     int remainingCapacity = instance.capacity;
+    int remainingPallets = instance.numPallets;
 
     for (const auto& pr : palletRatios) {
-        if (pr.pallet.weight <= remainingCapacity) {
+        if (pr.pallet.weight <= remainingCapacity && remainingPallets > 0) {
             selected.push_back(pr.pallet);
             remainingCapacity -= pr.pallet.weight;
+            -- remainingPallets;
         }
     }
 
