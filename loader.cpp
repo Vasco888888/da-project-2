@@ -1,6 +1,8 @@
 #include "loader.h"
 #include "algorithms/bruteforce.h"
 #include "algorithms/greedy.h"
+#include "algorithms/dynamic.h"
+#include "algorithms/linear.h"
 using namespace std;
 
 void printSelectedPallets(const std::vector<Pallet>& pallets) {
@@ -82,18 +84,19 @@ void executeAlgorithm(const string &datasetID, const Instance &inst) {
             printSelectedPallets(selected);
         }
         break;
-        ;
         case 2:
             cout << "\nExecuting Dynamic Programming on dataset " << datasetID << "...\n";
-            // TODO: Implement the dynamic programming algorithm.
-            break;
+        {
+            auto selected = dynamic(inst);
+            printSelectedPallets(selected);
+        }
+        break;
         case 3:
             std::cout << "\nExecuting Greedy Algorithm on dataset " << datasetID << "...\n";
         {
             auto selected = greedyKnapsack(inst);
             printSelectedPallets(selected);
         }
-        break;
         break;
         case 4:
             cout << "\nExecuting ILP on dataset " << datasetID << "...\n";
