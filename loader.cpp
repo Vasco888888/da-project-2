@@ -6,10 +6,24 @@
 using namespace std;
 
 void printSelectedPallets(const std::vector<Pallet>& pallets) {
+    int totalWeight = 0;
+    int totalProfit = 0;
+
     for (const auto& p : pallets) {
-        std::cout << p.id << ", " << p.weight << ", " << p.profit << "\n";
+        totalWeight += p.weight;
+        totalProfit += p.profit;
     }
+
+    std::cout << "Total Profit: " << totalProfit << "\n";
+    std::cout << "Total Weight: " << totalWeight << "\n";
+
+    std::cout << "Selected pallet IDs: ";
+    for (const auto& p : pallets) {
+        std::cout << p.id << " ";
+    }
+    std::cout << "\n";
 }
+
 
 Instance readInstance(const string& truckPath, const string& palletPath) {
     Instance instance;
