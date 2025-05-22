@@ -43,4 +43,6 @@ void executeAlgorithm(const string &datasetID, const Instance &inst);
 // Returns a map where the key is the dataset identifier and the value is the Instance.
 map<string, Instance> loadDatasets(const string &folder);
 
+void evaluateAlgorithmsOnDataset(const std::string& id, const Instance& inst);
+
 #endif // LOADER_H

@@ -23,6 +23,7 @@ int main() {
         cout << "2. View dataset details\n";
         cout << "3. Execute algorithm on a dataset\n";
         cout << "4. Exit\n";
+        cout << "5. Evaluate all algorithms and export results\n";
         cout << "Option: ";
         cin >> option;
 
@@ -59,6 +60,17 @@ int main() {
             }
             case 4: {
                 cout << "Exiting...\n";
+                break;
+            }
+            case 5: {
+                string ds;
+                cout << "Enter the dataset identifier (e.g., 01): ";
+                cin >> ds;
+                if (instances.find(ds) != instances.end()) {
+                    evaluateAlgorithmsOnDataset(ds, instances.at(ds));
+                } else {
+                    cout << "Dataset not found.\n";
+                }
                 break;
             }
             default: {

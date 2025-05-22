@@ -3,6 +3,8 @@
 #include "algorithms/greedy.h"
 #include "algorithms/dynamic.h"
 #include "algorithms/hybrid.h"
+#include <chrono>
+#include <fstream>
 using namespace std;
 
 void printSelectedPallets(const std::vector<Pallet>& pallets) {
@@ -152,5 +154,53 @@ map<string, Instance> loadDatasets(const string &folder) {
     }
     return instances;
 }
+
+void evaluateAlgorithmsOnDataset(const string& id, const Instance& inst) {
+    ofstream out("evaluation_single.csv");
+    out << "Algorithm,Time(us),Profit\n";
+
+    // Greedy
+    auto start = chrono::high_resolution_clock::now();
+    auto greedy = greedyKnapsack(inst);
+    auto end = chrono::high_resolution_clock::now();
+    int greedyProfit = 0;
+    for (auto& p : greedy) greedyProfit += p.profit;
+
+    auto timeGreedy = duration_cast<chrono::microseconds>(end - start).count();
+    out << "Greedy," << timeGreedy << "," << greedyProfit << "\n";
+
+    // Brute Force
+    start = chrono::high_resolution_clock::now();
+    auto brute = bruteForceKnapsack(inst);
+    end = chrono::high_resolution_clock::now();
+    int bruteProfit = 0;
+    for (auto& p : brute) bruteProfit += p.profit;
+    auto timeBrute = duration_cast<chrono::microseconds>(end - start).count();
+    out << "BruteForce," << timeBrute << "," << bruteProfit << "\n";
+
+    // Dynamic Programming
+    start = chrono::high_resolution_clock::now();
+    auto dyn = dynamic(inst);
+    end = chrono::high_resolution_clock::now();
+    int dynProfit = 0;
+    for (auto& p : dyn) dynProfit += p.profit;
+    auto timeDyn = duration_cast<chrono::microseconds>(end - start).count();
+    out << "Dynamic," << timeDyn << "," << dynProfit << "\n";
+
+    // Hybrid
+    start = chrono::high_resolution_clock::now();
+    auto hybrid = hybridKnapsack(inst, 0);
+    end = chrono::high_resolution_clock::now();
+    int hybridProfit = 0;
+    for (auto& p : hybrid) hybridProfit += p.profit;
+    auto timeHybrid = duration_cast<chrono::microseconds>(end - start).count();
+    out << "Hybrid," << timeHybrid << "," << hybridProfit << "\n";
+
+    out.close();
+
+    cout << "\nEvaluation complete for dataset " << id << ".\n";
+    cout << "Results saved to 'evaluation_single.csv'.\n";
+}
+
 
 
