@@ -17,6 +17,10 @@ struct Pallet {
     int id;
     int weight;
     int profit;
+
+    bool operator==(const Pallet& other) const {
+        return weight == other.weight && profit == other.profit;
+    }
 };
 
 // Structure representing an instance (a pair of CSV files for a dataset).

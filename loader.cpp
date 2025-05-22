@@ -2,7 +2,7 @@
 #include "algorithms/bruteforce.h"
 #include "algorithms/greedy.h"
 #include "algorithms/dynamic.h"
-#include "algorithms/linear.h"
+#include "algorithms/hybrid.h"
 using namespace std;
 
 void printSelectedPallets(const std::vector<Pallet>& pallets) {
@@ -86,7 +86,7 @@ void executeAlgorithm(const string &datasetID, const Instance &inst) {
     cout << "1. Exhaustive Search (Brute Force)\n";
     cout << "2. Dynamic Programming\n";
     cout << "3. Greedy Algorithm\n";
-    cout << "4. Integer Linear Programming (ILP)\n";
+    cout << "4. Hybrid Algorithm\n";
     cout << "Option: ";
     cin >> algoOption;
 
@@ -111,10 +111,13 @@ void executeAlgorithm(const string &datasetID, const Instance &inst) {
             auto selected = greedyKnapsack(inst);
             printSelectedPallets(selected);
         }
-        break;
+            break;
         case 4:
-            cout << "\nExecuting ILP on dataset " << datasetID << "...\n";
-            // TODO: Implement the ILP algorithm.
+            std::cout << "\nExecuting Hybrid Algorithm on dataset " << datasetID << "...\n";
+        {
+            auto selected = hybridKnapsack(inst, 0);
+            printSelectedPallets(selected);
+        }
             break;
         default:
             cout << "\nInvalid option. Returning to main menu.\n";

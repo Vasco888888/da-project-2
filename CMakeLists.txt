@@ -8,4 +8,6 @@ add_executable(
         loader.cpp
         algorithms/bruteforce.cpp
         algorithms/greedy.cpp
-        algorithms/dynamic.cpp)
+        algorithms/dynamic.cpp
+        algorithms/hybrid.cpp
+)
