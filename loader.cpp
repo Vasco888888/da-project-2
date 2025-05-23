@@ -155,52 +155,53 @@ map<string, Instance> loadDatasets(const string &folder) {
     return instances;
 }
 
+long long timeAlgorithm(const string& name,
+                       const Instance& inst,
+                       vector<Pallet> (*algorithm)(const Instance&),
+                       int repeat = 10,
+                       int& outProfit = *(new int)) {
+    outProfit = 0;
+    long long totalTime = 0;
+
+    for (int i = 0; i < repeat; ++i) {
+        auto start = chrono::high_resolution_clock::now();
+        auto result = algorithm(inst);
+        auto end = chrono::high_resolution_clock::now();
+
+        int profit = 0;
+        for (const auto& p : result) profit += p.profit;
+        outProfit = profit;  // save last profit (assuming deterministic)
+
+        totalTime += duration_cast<chrono::microseconds>(end - start).count();
+    }
+    cout << name << " average time over " << repeat << " runs: "
+         << (totalTime / repeat) << " us, Profit: " << outProfit << "\n";
+    return totalTime / repeat;
+}
+
 void evaluateAlgorithmsOnDataset(const string& id, const Instance& inst) {
     ofstream out("evaluation_single.csv");
-    out << "Algorithm,Time(us),Profit\n";
+    out << "Algorithm,AvgTime(us),Profit\n";
 
-    // Greedy
-    auto start = chrono::high_resolution_clock::now();
-    auto greedy = greedyKnapsack(inst);
-    auto end = chrono::high_resolution_clock::now();
-    int greedyProfit = 0;
-    for (auto& p : greedy) greedyProfit += p.profit;
+    int profitGreedy, profitBrute, profitDyn, profitHybrid;
 
-    auto timeGreedy = duration_cast<chrono::microseconds>(end - start).count();
-    out << "Greedy," << timeGreedy << "," << greedyProfit << "\n";
+    long long timeGreedy = timeAlgorithm("Greedy", inst, greedyKnapsack, 20, profitGreedy);
+    long long timeBrute = timeAlgorithm("BruteForce", inst, bruteForceKnapsack, 20, profitBrute);
+    long long timeDyn = timeAlgorithm("Dynamic", inst, dynamic, 20, profitDyn);
+    long long timeHybrid = timeAlgorithm("Hybrid", inst,
+                          [](const Instance& i){ return hybridKnapsack(i, 20); }, 20, profitHybrid);
 
-    // Brute Force
-    start = chrono::high_resolution_clock::now();
-    auto brute = bruteForceKnapsack(inst);
-    end = chrono::high_resolution_clock::now();
-    int bruteProfit = 0;
-    for (auto& p : brute) bruteProfit += p.profit;
-    auto timeBrute = duration_cast<chrono::microseconds>(end - start).count();
-    out << "BruteForce," << timeBrute << "," << bruteProfit << "\n";
-
-    // Dynamic Programming
-    start = chrono::high_resolution_clock::now();
-    auto dyn = dynamic(inst);
-    end = chrono::high_resolution_clock::now();
-    int dynProfit = 0;
-    for (auto& p : dyn) dynProfit += p.profit;
-    auto timeDyn = duration_cast<chrono::microseconds>(end - start).count();
-    out << "Dynamic," << timeDyn << "," << dynProfit << "\n";
-
-    // Hybrid
-    start = chrono::high_resolution_clock::now();
-    auto hybrid = hybridKnapsack(inst, 0);
-    end = chrono::high_resolution_clock::now();
-    int hybridProfit = 0;
-    for (auto& p : hybrid) hybridProfit += p.profit;
-    auto timeHybrid = duration_cast<chrono::microseconds>(end - start).count();
-    out << "Hybrid," << timeHybrid << "," << hybridProfit << "\n";
+    out << "Greedy," << timeGreedy << "," << profitGreedy << "\n";
+    out << "BruteForce," << timeBrute << "," << profitBrute << "\n";
+    out << "Dynamic," << timeDyn << "," << profitDyn << "\n";
+    out << "Hybrid," << timeHybrid << "," << profitHybrid << "\n";
 
     out.close();
 
     cout << "\nEvaluation complete for dataset " << id << ".\n";
     cout << "Results saved to 'evaluation_single.csv'.\n";
 }
+
 
 
 
