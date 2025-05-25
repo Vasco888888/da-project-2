@@ -2,6 +2,7 @@
 #define HYBRID_H
 
 #include <vector>
+#include "greedy.h"
 #include "bruteforce.h"
 
 /**

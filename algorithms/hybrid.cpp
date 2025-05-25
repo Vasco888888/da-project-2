@@ -1,5 +1,4 @@
 #include "hybrid.h"
-#include "greedy.h"
 #include <vector>
 #include <algorithm>
 
