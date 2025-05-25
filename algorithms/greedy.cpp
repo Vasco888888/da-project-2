@@ -3,11 +3,12 @@
 
 using namespace std;
 
-struct PalletRatio {
-    Pallet pallet;
-    double ratio;
-};
-
+/**
+ * @brief Solves the knapsack problem using a greedy approach.
+ *
+ * @param instance The knapsack problem instance containing pallets and capacity.
+ * @return A vector of selected pallets that maximize profit while respecting constraints.
+ */
 vector<Pallet> greedyKnapsack(const Instance& instance) {
     vector<PalletRatio> palletRatios;
 

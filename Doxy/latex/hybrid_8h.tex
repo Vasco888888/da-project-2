@@ -1,0 +1,42 @@
+\doxysection{algorithms/hybrid.h File Reference}
+\hypertarget{hybrid_8h}{}\label{hybrid_8h}\index{algorithms/hybrid.h@{algorithms/hybrid.h}}
+
+
+Header file for the hybrid knapsack algorithm.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}bruteforce.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{struct_pallet}{Pallet}} $>$ \mbox{\hyperlink{hybrid_8h_a1938c9baf0dd271bd2a15a0452779429}{hybrid\+Knapsack}} (const \mbox{\hyperlink{struct_instance}{Instance}} \&instance)
+\begin{DoxyCompactList}\small\item\em Solves the knapsack problem using a hybrid approach combining multiple strategies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for the hybrid knapsack algorithm. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{hybrid_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{hybrid_8h_a1938c9baf0dd271bd2a15a0452779429}\index{hybrid.h@{hybrid.h}!hybridKnapsack@{hybridKnapsack}}
+\index{hybridKnapsack@{hybridKnapsack}!hybrid.h@{hybrid.h}}
+\doxysubsubsection{\texorpdfstring{hybridKnapsack()}{hybridKnapsack()}}
+{\footnotesize\ttfamily \label{hybrid_8h_a1938c9baf0dd271bd2a15a0452779429} 
+vector$<$ \mbox{\hyperlink{struct_pallet}{Pallet}} $>$ hybrid\+Knapsack (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_instance}{Instance}} \&}]{instance}{}\end{DoxyParamCaption})}
+
+
+
+Solves the knapsack problem using a hybrid approach combining multiple strategies. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instance} & The knapsack problem instance containing pallets and capacity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of selected pallets that maximize profit while respecting constraints. 
+\end{DoxyReturn}

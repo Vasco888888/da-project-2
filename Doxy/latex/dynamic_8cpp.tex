@@ -1,0 +1,33 @@
+\doxysection{algorithms/dynamic.cpp File Reference}
+\hypertarget{dynamic_8cpp}{}\label{dynamic_8cpp}\index{algorithms/dynamic.cpp@{algorithms/dynamic.cpp}}
+{\ttfamily \#include "{}dynamic.\+h"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{struct_pallet}{Pallet}} $>$ \mbox{\hyperlink{dynamic_8cpp_a865842ec677f602dfebe559905db24d5}{dynamic}} (const \mbox{\hyperlink{struct_instance}{Instance}} \&instance)
+\begin{DoxyCompactList}\small\item\em Solves the knapsack problem using a dynamic programming approach. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{dynamic_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{dynamic_8cpp_a865842ec677f602dfebe559905db24d5}\index{dynamic.cpp@{dynamic.cpp}!dynamic@{dynamic}}
+\index{dynamic@{dynamic}!dynamic.cpp@{dynamic.cpp}}
+\doxysubsubsection{\texorpdfstring{dynamic()}{dynamic()}}
+{\footnotesize\ttfamily \label{dynamic_8cpp_a865842ec677f602dfebe559905db24d5} 
+vector$<$ \mbox{\hyperlink{struct_pallet}{Pallet}} $>$ dynamic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_instance}{Instance}} \&}]{instance}{}\end{DoxyParamCaption})}
+
+
+
+Solves the knapsack problem using a dynamic programming approach. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instance} & The knapsack problem instance containing pallets and capacity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of selected pallets that maximize profit while respecting constraints. 
+\end{DoxyReturn}

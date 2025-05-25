@@ -1,11 +1,11 @@
 #include <iostream>
 #include "loader.h"
+
 using namespace std;
 
 int main() {
     // Change this folder path if needed.
-    string folder = "datasets-example";
-    //string folder = "datasets";
+    string folder = "datasets-extra";
 
     // Check if the folder exists.
     if (!filesystem::exists(folder)) {

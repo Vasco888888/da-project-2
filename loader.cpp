@@ -5,8 +5,18 @@
 #include "algorithms/hybrid.h"
 #include <chrono>
 #include <fstream>
+#include <iostream>
+
 using namespace std;
 
+/**
+ * @brief Prints the details of the selected pallets.
+ *
+ * This function calculates and displays the total profit, total weight,
+ * and the IDs of the selected pallets in a knapsack solution.
+ *
+ * @param pallets A vector of selected pallets to be printed.
+ */
 void printSelectedPallets(const std::vector<Pallet>& pallets) {
     int totalWeight = 0;
     int totalProfit = 0;
@@ -26,7 +36,13 @@ void printSelectedPallets(const std::vector<Pallet>& pallets) {
     std::cout << "\n";
 }
 
-
+/**
+ * @brief Reads a knapsack problem instance from truck and pallet files.
+ *
+ * @param truckPath Path to the truck file.
+ * @param palletPath Path to the pallet file.
+ * @return The loaded knapsack problem instance.
+ */
 Instance readInstance(const string& truckPath, const string& palletPath) {
     Instance instance;
     ifstream truckFile(truckPath);
@@ -72,6 +88,11 @@ Instance readInstance(const string& truckPath, const string& palletPath) {
     return instance;
 }
 
+/**
+ * @brief Displays the details of a knapsack problem instance.
+ *
+ * @param inst The instance to display.
+ */
 void showInstance(const Instance &inst) {
     cout << "Truck capacity: " << inst.capacity << "\n";
     cout << "Number of pallets (from TruckAndPallets file): " << inst.numPallets << "\n";
@@ -82,6 +103,12 @@ void showInstance(const Instance &inst) {
     }
 }
 
+/**
+ * @brief Executes a selected algorithm on a dataset.
+ *
+ * @param datasetID Identifier of the dataset.
+ * @param inst The knapsack problem instance.
+ */
 void executeAlgorithm(const string &datasetID, const Instance &inst) {
     int algoOption = 0;
     cout << "\nChoose an algorithm:\n";
@@ -127,6 +154,12 @@ void executeAlgorithm(const string &datasetID, const Instance &inst) {
     }
 }
 
+/**
+ * @brief Loads all datasets from a specified folder.
+ *
+ * @param folder Path to the folder containing dataset files.
+ * @return A map of dataset identifiers to their corresponding instances.
+ */
 map<string, Instance> loadDatasets(const string &folder) {
     map<string, string> trucks;
     map<string, string> pallets;
@@ -155,11 +188,21 @@ map<string, Instance> loadDatasets(const string &folder) {
     return instances;
 }
 
+/**
+ * @brief Times the execution of a knapsack algorithm.
+ *
+ * @param name Name of the algorithm.
+ * @param inst The knapsack problem instance.
+ * @param algorithm Pointer to the algorithm function.
+ * @param repeat Number of repetitions for timing.
+ * @param outProfit Output parameter for the profit of the last run.
+ * @return Average execution time in microseconds.
+ */
 long long timeAlgorithm(const string& name,
                        const Instance& inst,
                        vector<Pallet> (*algorithm)(const Instance&),
-                       int repeat = 10,
-                       int& outProfit = *(new int)) {
+                       int repeat,
+                       int& outProfit) {
     outProfit = 0;
     long long totalTime = 0;
 
@@ -179,6 +222,12 @@ long long timeAlgorithm(const string& name,
     return totalTime / repeat;
 }
 
+/**
+ * @brief Evaluates all algorithms on a specific dataset and exports results.
+ *
+ * @param id Identifier of the dataset.
+ * @param inst The knapsack problem instance.
+ */
 void evaluateAlgorithmsOnDataset(const string& id, const Instance& inst) {
     ofstream out("evaluation_single.csv");
     out << "Algorithm,AvgTime(us),Profit\n";

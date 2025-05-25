@@ -2,10 +2,15 @@
 #include "greedy.h"
 #include <vector>
 #include <algorithm>
-#include <climits>
 
 using namespace std;
 
+/**
+ * @brief Solves the knapsack problem using a hybrid approach combining multiple strategies.
+ *
+ * @param instance The knapsack problem instance containing pallets and capacity.
+ * @return A vector of selected pallets that maximize profit while respecting constraints.
+ */
 vector<Pallet> hybridKnapsack(const Instance& instance) {
     // Step 1: Greedy baseline
     vector<Pallet> greedySet = greedyKnapsack(instance);
@@ -38,6 +43,10 @@ vector<Pallet> hybridKnapsack(const Instance& instance) {
     vector<Pallet> currentSet;
     vector<Pallet> bestSet = greedySet;
     backtrack(candidates, 0, 0, 0, instance.capacity, currentSet, bestSet, bestProfit, bestWeight);
+
+    sort(bestSet.begin(), bestSet.end(), [](const Pallet& a, const Pallet& b) {
+        return a.id < b.id;
+    });
 
     return bestSet;
 }

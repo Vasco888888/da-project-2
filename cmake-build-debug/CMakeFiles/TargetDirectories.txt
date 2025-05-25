@@ -1,3 +1,3 @@
-C:/Users/reval/OneDrive/Ambiente de Trabalho/STUDY/2-2/DA/da/cmake-build-debug/CMakeFiles/DA2025_PRJ2_G24.dir
-C:/Users/reval/OneDrive/Ambiente de Trabalho/STUDY/2-2/DA/da/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/reval/OneDrive/Ambiente de Trabalho/STUDY/2-2/DA/da/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mariopereira/CLionProjects/DA2025_PRJ2_G24/cmake-build-debug/CMakeFiles/DA2025_PRJ2_G24.dir
+/Users/mariopereira/CLionProjects/DA2025_PRJ2_G24/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mariopereira/CLionProjects/DA2025_PRJ2_G24/cmake-build-debug/CMakeFiles/rebuild_cache.dir

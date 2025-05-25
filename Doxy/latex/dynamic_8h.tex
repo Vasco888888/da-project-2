@@ -1,0 +1,46 @@
+\doxysection{algorithms/dynamic.h File Reference}
+\hypertarget{dynamic_8h}{}\label{dynamic_8h}\index{algorithms/dynamic.h@{algorithms/dynamic.h}}
+
+
+Header file for the dynamic programming knapsack algorithm.  
+
+
+{\ttfamily \#include "{}../loader.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_state}{State}}
+\begin{DoxyCompactList}\small\item\em Represents the state of the dynamic programming table for the knapsack problem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{struct_pallet}{Pallet}} $>$ \mbox{\hyperlink{dynamic_8h_a865842ec677f602dfebe559905db24d5}{dynamic}} (const \mbox{\hyperlink{struct_instance}{Instance}} \&instance)
+\begin{DoxyCompactList}\small\item\em Solves the knapsack problem using a dynamic programming approach. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for the dynamic programming knapsack algorithm. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{dynamic_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{dynamic_8h_a865842ec677f602dfebe559905db24d5}\index{dynamic.h@{dynamic.h}!dynamic@{dynamic}}
+\index{dynamic@{dynamic}!dynamic.h@{dynamic.h}}
+\doxysubsubsection{\texorpdfstring{dynamic()}{dynamic()}}
+{\footnotesize\ttfamily \label{dynamic_8h_a865842ec677f602dfebe559905db24d5} 
+vector$<$ \mbox{\hyperlink{struct_pallet}{Pallet}} $>$ dynamic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_instance}{Instance}} \&}]{instance}{}\end{DoxyParamCaption})}
+
+
+
+Solves the knapsack problem using a dynamic programming approach. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instance} & The knapsack problem instance containing pallets and capacity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of selected pallets that maximize profit while respecting constraints. 
+\end{DoxyReturn}

@@ -1,4 +1,5 @@
 Algorithm,AvgTime(us),Profit
-Greedy,43,269
-Dynamic,1888,272
-Hybrid,3085,271
+Greedy,1,1
+BruteForce,1,15
+Dynamic,6,15
+Hybrid,4,15

@@ -4,18 +4,17 @@
 #include <vector>
 #include "bruteforce.h"
 
-std::vector<Pallet> hybridKnapsack(const Instance& instance);
+/**
+ * @file hybrid.h
+ * @brief Header file for the hybrid knapsack algorithm.
+ */
 
-void backtrack(
-    const std::vector<Pallet>& pallets,
-    int index,
-    int currentWeight,
-    int currentProfit,
-    int capacity,
-    std::vector<Pallet>& currentSet,
-    std::vector<Pallet>& bestSet,
-    int& bestProfit,
-    int& bestWeight
-);
+/**
+ * @brief Solves the knapsack problem using a hybrid approach combining multiple strategies.
+ *
+ * @param instance The knapsack problem instance containing pallets and capacity.
+ * @return A vector of selected pallets that maximize profit while respecting constraints.
+ */
+vector<Pallet> hybridKnapsack(const Instance& instance);
 
 #endif

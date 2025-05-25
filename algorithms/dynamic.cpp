@@ -4,12 +4,12 @@
 
 using namespace std;
 
-struct State {
-    int profit = 0;
-    int pallets = 0;
-    int totalWeight = 0;
-};
-
+/**
+ * @brief Solves the knapsack problem using a dynamic programming approach.
+ *
+ * @param instance The knapsack problem instance containing pallets and capacity.
+ * @return A vector of selected pallets that maximize profit while respecting constraints.
+ */
 vector<Pallet> dynamic(const Instance& instance) {
     int n = instance.pallets.size();
     int W = instance.capacity;
