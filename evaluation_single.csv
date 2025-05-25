@@ -1,0 +1,4 @@
+Algorithm,AvgTime(us),Profit
+Greedy,43,269
+Dynamic,1888,272
+Hybrid,3085,271
