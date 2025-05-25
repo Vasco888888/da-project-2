@@ -1,56 +1,70 @@
 #include "dynamic.h"
 #include <vector>
 #include <algorithm>
+
 using namespace std;
 
 struct State {
     int profit = 0;
-    int pallets = 0; // number of pallets used
+    int pallets = 0;
+    int totalWeight = 0;
 };
 
 vector<Pallet> dynamic(const Instance& instance) {
     int n = instance.pallets.size();
     int W = instance.capacity;
 
-    vector<State> dp(W + 1);
-    vector<int> prev(W + 1, -1);   // to track previous weight
-    vector<int> choice(W + 1, -1); // to track chosen item index
+    vector<vector<State>> dp(n + 1, vector<State>(W + 1));
 
-    for (int i = 0; i < n; ++i) {
-        const auto& p = instance.pallets[i];
-        for (int w = W; w >= p.weight; --w) {
-            int newProfit = dp[w - p.weight].profit + p.profit;
-            int newPallets = dp[w - p.weight].pallets + 1;
+    for (int i = 1; i <= n; ++i) {
+        const auto& p = instance.pallets[i - 1];
+        for (int w = 0; w <= W; ++w) {
+            // Not taking current pallet
+            dp[i][w] = dp[i - 1][w];
 
-            const auto& cur = dp[w];
+            // Try including the current pallet
+            if (w >= p.weight) {
+                const auto& prev = dp[i - 1][w - p.weight];
+                int newProfit = prev.profit + p.profit;
+                int newPallets = prev.pallets + 1;
+                int newWeight = prev.totalWeight + p.weight;
 
-            // Update if better profit, or same profit with fewer pallets
-            if (newProfit > cur.profit || (newProfit == cur.profit && newPallets < cur.pallets)) {
-                dp[w].profit = newProfit;
-                dp[w].pallets = newPallets;
-                prev[w] = w - p.weight;
-                choice[w] = i;
+                const auto& curr = dp[i][w];
+
+                if (newProfit > curr.profit ||
+                    (newProfit == curr.profit && newPallets < curr.pallets) ||
+                    (newProfit == curr.profit && newPallets == curr.pallets && newWeight < curr.totalWeight)) {
+                    dp[i][w] = { newProfit, newPallets, newWeight };
+                }
             }
         }
     }
 
-    // Find best profit and minimum pallets at best profit
-    int bestWeight = 0;
-    for (int w = 1; w <= W; ++w) {
-        if (dp[w].profit > dp[bestWeight].profit ||
-            (dp[w].profit == dp[bestWeight].profit && dp[w].pallets < dp[bestWeight].pallets)) {
-            bestWeight = w;
-            }
+    // Find the best result
+    State bestState;
+    int bestW = 0;
+    for (int w = 0; w <= W; ++w) {
+        const auto& s = dp[n][w];
+        if (s.profit > bestState.profit ||
+            (s.profit == bestState.profit && s.pallets < bestState.pallets) ||
+            (s.profit == bestState.profit && s.pallets == bestState.pallets && s.totalWeight < bestState.totalWeight)) {
+            bestState = s;
+            bestW = w;
+        }
     }
 
-    // Reconstruct solution
+    // Backtrack to reconstruct the selected pallets
     vector<Pallet> selected;
-    int w = bestWeight;
-    while (choice[w] != -1) {
-        selected.push_back(instance.pallets[choice[w]]);
-        w = prev[w];
+    int w = bestW;
+    for (int i = n; i > 0; --i) {
+        if (dp[i][w].profit != dp[i - 1][w].profit ||
+            dp[i][w].pallets != dp[i - 1][w].pallets) {
+            const auto& p = instance.pallets[i - 1];
+            selected.push_back(p);
+            w -= p.weight;
+        }
     }
-    reverse(selected.begin(), selected.end());
 
+    reverse(selected.begin(), selected.end());
     return selected;
 }

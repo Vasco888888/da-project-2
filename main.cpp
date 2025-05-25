@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
     // Change this folder path if needed.
-    string folder = "datasets-extra";
+    string folder = "datasets-example";
     //string folder = "datasets";
 
     // Check if the folder exists.

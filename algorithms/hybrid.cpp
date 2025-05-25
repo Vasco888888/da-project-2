@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector<Pallet> hybridKnapsack(const Instance& instance, int extraMargin) {
+vector<Pallet> hybridKnapsack(const Instance& instance) {
     // Step 1: Greedy baseline
     vector<Pallet> greedySet = greedyKnapsack(instance);
     int bestProfit = 0, bestWeight = 0;
@@ -17,7 +17,7 @@ vector<Pallet> hybridKnapsack(const Instance& instance, int extraMargin) {
 
     // Step 2: Prepare candidate set
     vector<Pallet> candidates = greedySet;
-    int subsetSize = greedySet.size() + extraMargin;
+    int subsetSize = greedySet.size() + max(1, static_cast<int>(instance.pallets.size() * 0.30));
 
     vector<Pallet> sortedByRatio = instance.pallets;
     sort(sortedByRatio.begin(), sortedByRatio.end(), [](const Pallet& a, const Pallet& b) {

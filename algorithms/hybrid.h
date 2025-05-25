@@ -4,7 +4,7 @@
 #include <vector>
 #include "bruteforce.h"
 
-std::vector<Pallet> hybridKnapsack(const Instance& instance, int extraMargin);
+std::vector<Pallet> hybridKnapsack(const Instance& instance);
 
 void backtrack(
     const std::vector<Pallet>& pallets,

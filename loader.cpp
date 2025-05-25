@@ -117,7 +117,7 @@ void executeAlgorithm(const string &datasetID, const Instance &inst) {
         case 4:
             std::cout << "\nExecuting Hybrid Algorithm on dataset " << datasetID << "...\n";
         {
-            auto selected = hybridKnapsack(inst, 0);
+            auto selected = hybridKnapsack(inst);
             printSelectedPallets(selected);
         }
             break;
@@ -188,8 +188,8 @@ void evaluateAlgorithmsOnDataset(const string& id, const Instance& inst) {
     long long timeGreedy = timeAlgorithm("Greedy", inst, greedyKnapsack, 20, profitGreedy);
     long long timeBrute = timeAlgorithm("BruteForce", inst, bruteForceKnapsack, 20, profitBrute);
     long long timeDyn = timeAlgorithm("Dynamic", inst, dynamic, 20, profitDyn);
-    long long timeHybrid = timeAlgorithm("Hybrid", inst,
-                          [](const Instance& i){ return hybridKnapsack(i, 20); }, 20, profitHybrid);
+    long long timeHybrid = timeAlgorithm("Hybrid", inst, hybridKnapsack, 20, profitHybrid);
+
 
     out << "Greedy," << timeGreedy << "," << profitGreedy << "\n";
     out << "BruteForce," << timeBrute << "," << profitBrute << "\n";
