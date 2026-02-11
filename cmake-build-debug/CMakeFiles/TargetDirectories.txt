@@ -1,3 +1,0 @@
-C:/Users/vasco/OneDrive/Documentos/DA2025_PRJ2_G24/cmake-build-debug/CMakeFiles/DA2025_PRJ2_G24.dir
-C:/Users/vasco/OneDrive/Documentos/DA2025_PRJ2_G24/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/vasco/OneDrive/Documentos/DA2025_PRJ2_G24/cmake-build-debug/CMakeFiles/rebuild_cache.dir
