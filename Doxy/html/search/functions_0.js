@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['backtrack_0',['backtrack',['../bruteforce_8cpp.html#a4a8acac4bfa3528a7e2facdea21e2c93',1,'backtrack(const vector&lt; Pallet &gt; &amp;pallets, int index, int currentWeight, int currentProfit, int capacity, vector&lt; Pallet &gt; &amp;currentSet, vector&lt; Pallet &gt; &amp;bestSet, int &amp;bestProfit, int &amp;bestWeight):&#160;bruteforce.cpp'],['../bruteforce_8h.html#a4a8acac4bfa3528a7e2facdea21e2c93',1,'backtrack(const vector&lt; Pallet &gt; &amp;pallets, int index, int currentWeight, int currentProfit, int capacity, vector&lt; Pallet &gt; &amp;currentSet, vector&lt; Pallet &gt; &amp;bestSet, int &amp;bestProfit, int &amp;bestWeight):&#160;bruteforce.cpp']]],
-  ['bruteforceknapsack_1',['bruteForceKnapsack',['../bruteforce_8cpp.html#a47e00ef149b9296a922666cc74b971fc',1,'bruteForceKnapsack(const Instance &amp;instance):&#160;bruteforce.cpp'],['../bruteforce_8h.html#a47e00ef149b9296a922666cc74b971fc',1,'bruteForceKnapsack(const Instance &amp;instance):&#160;bruteforce.cpp']]]
-];

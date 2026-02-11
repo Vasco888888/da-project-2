@@ -3,11 +3,15 @@ project(DA2025_PRJ2_G24)
 
 set(CMAKE_CXX_STANDARD 20)
 
+include_directories(include)
+
 add_executable(
-        DA2025_PRJ2_G24 main.cpp
-        loader.cpp
-        algorithms/bruteforce.cpp
-        algorithms/greedy.cpp
-        algorithms/dynamic.cpp
-        algorithms/hybrid.cpp
+        DA2025_PRJ2_G24 
+        src/main.cpp
+        src/loader.cpp
+        src/algorithms/bruteforce.cpp
+        src/algorithms/greedy.cpp
+        src/algorithms/dynamic.cpp
+        src/algorithms/hybrid.cpp
 )
+

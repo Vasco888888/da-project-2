@@ -25,16 +25,38 @@ The program loads datasets describing pallets and truck capacities, runs selecte
 
 ## Project Structure
 
-/algorithms  
-├─ bruteForce.h / bruteForce.cpp  
-├─ dynamic.h / dynamic.cpp  
-├─ greedy.h / greedy.cpp  
-├─ hybrid.h / hybrid.cpp  
-/loader.h  
-/loader.cpp  
-/main.cpp  
-/evaluation_single.csv (output file)  
-README.md
+- **include/**: Header files (`.h`).
+  - **algorithms/**: Header files for specific algorithms.
+- **src/**: Source files (`.cpp`).
+  - **algorithms/**: Implementation of the solver algorithms.
+- **data/**: Dataset folders (`datasets`, `datasets-example`, etc.) and evaluation results.
+- **LICENSE**: Project license (MIT).
+- **CMakeLists.txt**: Configuration for building the project with CMake.
+- **README.md**: Project documentation.
+
+---
+
+## Prerequisites
+
+- **C++ Compiler**: Support for C++20 or later.
+- **CMake**: Version 3.30 or later.
+
+---
+
+## Building and Running
+
+1. **Configure and Build**:
+   ```bash
+   mkdir build
+   cd build
+   cmake ..
+   cmake --build .
+   ```
+
+2. **Run**:
+   ```bash
+   ./DA2025_PRJ2_G24
+   ```
 
 ---
 
@@ -46,7 +68,7 @@ README.md
 - **Pallets_XX.csv**  
   Contains pallets data: id, weight, profit.
 
-Files must be placed in the same folder for the program to load datasets successfully.
+Files must be placed in the `data/` folder for the program to load datasets successfully.
 
 ---
 
@@ -64,3 +86,14 @@ Files must be placed in the same folder for the program to load datasets success
 - Pallets in output are sorted by ID (except for greedy).
 - Timing measurements are averaged over multiple runs (default 20).
 - The hybrid algorithm balances solution quality and runtime.
+
+---
+
+## Credits
+
+Developed by **Group G24** for the **Design and Analysis of Algorithms (DA)** course at **FEUP**.
+
+- **Mário Pereira** up202304965
+- **João Júnior** up202306719
+- **Vasco Sá** up202306731
+
