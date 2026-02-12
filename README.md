@@ -91,7 +91,7 @@ Files must be placed in the `data/` folder for the program to load datasets succ
 
 ## Credits
 
-Developed by **Group G24** for the **Design and Analysis of Algorithms (DA)** course at **FEUP**.
+Developed by **Group G24** for the **Desenho de Algoritmos (DA)** course at **FEUP**.
 
 - **Mário Pereira** up202304965
 - **João Júnior** up202306719
